@@ -16,23 +16,22 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Images\back-image.jpg">
+    <Resource Include="Images\back-image.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\key-icon.png">
+    </Resource>
+    <Resource Include="Images\key-icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\logo.png">
+    </Resource>
+    <Resource Include="Images\logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\user-icon.png">
+    </Resource>
+    <Resource Include="Images\user-icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Model\" />
-    <Folder Include="ViewModel\" />
   </ItemGroup>
 
 </Project>
