@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security;
+using System.Security.Principal;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using WPF_LoginForm.Model;
+using WPF_LoginForm.Repositories;
 
 namespace WPF_LoginForm.ViewModel
 {
@@ -16,6 +20,9 @@ namespace WPF_LoginForm.ViewModel
         private string _errorMessage;
         private bool _isViewVisible = true;
 
+        private IUserRepository userRepository;
+
+        // Properties
         public string Username 
         {
             get => _username;
@@ -64,6 +71,7 @@ namespace WPF_LoginForm.ViewModel
 
         public LoginViewModel()
         {
+            userRepository = new UserRepository();
             LoginCommand = new ViewModelCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
             RecoverPasswordCommand = new ViewModelCommand(p =>ExecuteRecoverPasswordCommand("", ""));
         }
@@ -81,7 +89,18 @@ namespace WPF_LoginForm.ViewModel
 
         private void ExecuteLoginCommand(object? obj)
         {
-            throw new NotImplementedException();
+            var isValidUser = userRepository.AuthenticateUser(new System.Net.NetworkCredential(Username, Password));
+        
+            if(isValidUser)
+            {
+                Thread.CurrentPrincipal = new GenericPrincipal(
+                    new GenericIdentity(Username), null);
+                IsViewVisible = false;
+            }
+            else
+            {
+                ErrorMessage = "* Invalid username or password";
+            }
         }
         private void ExecuteRecoverPasswordCommand(string username, string email)
         {

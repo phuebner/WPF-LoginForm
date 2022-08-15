@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WPF_LoginForm.View
+namespace WPF_LoginForm.Views
 {
     /// <summary>
-    /// Interaction logic for LoginVIew.xaml
+    /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class LoginVIew : Window
+    public partial class LoginView : Window
     {
-        public LoginVIew()
+        public LoginView()
         {
             InitializeComponent();
         }
